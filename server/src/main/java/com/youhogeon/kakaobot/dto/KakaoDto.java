@@ -1,4 +1,4 @@
-package com.youhogeon.kakaogpt.dto;
+package com.youhogeon.kakaobot.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

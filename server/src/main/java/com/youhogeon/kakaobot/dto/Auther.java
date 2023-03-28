@@ -1,6 +1,5 @@
-package com.youhogeon.kakaogpt.dto;
+package com.youhogeon.kakaobot.dto;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 

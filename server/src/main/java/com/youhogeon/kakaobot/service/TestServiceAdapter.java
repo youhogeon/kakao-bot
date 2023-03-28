@@ -1,11 +1,11 @@
-package com.youhogeon.kakaogpt.service;
+package com.youhogeon.kakaobot.service;
 
 import org.springframework.stereotype.Component;
 
-import com.youhogeon.kakaogpt.dto.KakaoDto;
+import com.youhogeon.kakaobot.dto.KakaoDto;
 
 @Component
-public class TestServiceAdaptor implements ServiceAdaptor {
+public class TestServiceAdapter implements ServiceAdapter {
 
     @Override
     public String process(KakaoDto message) {

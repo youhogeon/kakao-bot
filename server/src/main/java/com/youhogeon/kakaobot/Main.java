@@ -1,9 +1,9 @@
-package com.youhogeon.kakaogpt;
+package com.youhogeon.kakaobot;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.youhogeon.kakaogpt.server.ServerRunner;
+import com.youhogeon.kakaobot.server.ServerRunner;
 
 public class Main {
 

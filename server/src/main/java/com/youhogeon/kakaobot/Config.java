@@ -1,4 +1,4 @@
-package com.youhogeon.kakaogpt;
+package com.youhogeon.kakaobot;
 
 import java.net.DatagramSocket;
 

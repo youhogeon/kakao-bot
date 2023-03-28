@@ -1,4 +1,4 @@
-package com.youhogeon.kakaogpt.server;
+package com.youhogeon.kakaobot.server;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
