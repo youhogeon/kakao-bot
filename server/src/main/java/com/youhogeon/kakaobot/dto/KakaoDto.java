@@ -2,6 +2,7 @@ package com.youhogeon.kakaobot.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
@@ -16,5 +17,15 @@ public class KakaoDto {
 
     @JsonProperty("isDebugRoom")
     private boolean isDebugRoom;
+
+    @Getter
+    @EqualsAndHashCode
+    public static class Auther {
+        
+        private String name;
+        private String avatar;
+    
+    }
+    
 
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.youhogeon.kakaobot.dto.KakaoDto;
 
 @Component
-public class TestServiceAdapter implements ServiceAdapter {
+public class TestService implements Service {
 
     @Override
     public String process(KakaoDto message) {
@@ -17,6 +17,11 @@ public class TestServiceAdapter implements ServiceAdapter {
         if (message.getContent().equals("테스트")) return true;
 
         return false;
+    }
+
+    @Override
+    public String getDescription() {
+        return null;
     }
     
 }

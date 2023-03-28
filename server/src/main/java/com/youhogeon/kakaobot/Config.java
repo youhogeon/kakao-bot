@@ -12,9 +12,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @ComponentScan
-@PropertySource("classpath:application.properties")
+@PropertySource(value = "classpath:application.properties", encoding = "UTF-8")
 public class Config {
-    
+
     @Bean
     public DatagramSocket datagramSocket(
         @Value("${server.port}") int port
