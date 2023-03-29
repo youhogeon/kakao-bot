@@ -39,9 +39,34 @@ public class OpenAIService implements Service {
 
     private final String OPENAI_API_URL = "https://api.openai.com/v1/chat/completions";
     private final String PREFIX = "얌마 ";
+    private final String DESCRIPTION = "얌마 {메시지} 👉 얌마와 대화를 나눌 수 있어요! (ChatGPT 3.5)";
+    private final String ERROR_MSG = "얌마에게 문제가 생겼어요! 😯";
 
     private String removePrefix(String message) {
         return message.substring(PREFIX.length());
+    }
+
+    private String requestAPI(OpenAIRequest chatGPTRequest) {
+        try {
+            String result = Jsoup.connect(OPENAI_API_URL)
+                .header("Authorization", "Bearer " + secretKey)
+                .header("Content-Type", "application/json")
+                .requestBody(objectMapper.writeValueAsString(chatGPTRequest))
+                .method(Method.POST)
+                .ignoreContentType(true)
+                .timeout(timeout)
+                .execute()
+                .body();
+            
+            OpenAIResponse gptDto = objectMapper.readValue(result, OpenAIResponse.class);
+
+            return gptDto.getChoices().get(0).getMessage().getContent();
+    
+        } catch (IOException e) {
+            log.warn("OpenAI API 호출 실패", e, chatGPTRequest);
+        }
+
+        return ERROR_MSG;
     }
 
     @Override
@@ -53,26 +78,7 @@ public class OpenAIService implements Service {
         chatGPTRequest.addMessage("system", systemDefinition);
         chatGPTRequest.addMessage("user", requestMessage);
 
-
-        try {
-            String result = Jsoup.connect(OPENAI_API_URL)
-                .header("Authorization", "Bearer " + secretKey)
-                .header("Content-Type", "application/json")
-                .requestBody(objectMapper.writeValueAsString(chatGPTRequest))
-                .method(Method.POST)
-                .ignoreContentType(true)
-                .timeout(timeout)
-                .execute()
-                .body();
-
-            OpenAIResponse gptDto = objectMapper.readValue(result, OpenAIResponse.class);
-
-            return gptDto.getChoices().get(0).getMessage().getContent();
-        } catch (IOException e) {
-            log.warn("OpenAI API 호출 실패", e, message);
-        }
-
-        return "얌마에게 문제가 생겼어요! 😯";
+        return requestAPI(chatGPTRequest);
     }
 
     @Override
@@ -86,7 +92,7 @@ public class OpenAIService implements Service {
 
     @Override
     public String getDescription() {
-        return "얌마 {메시지} 👉 얌마와 대화를 나눌 수 있어요! (ChatGPT 3.5)";
+        return DESCRIPTION;
     }
     
 }

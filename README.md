@@ -17,3 +17,6 @@
 0. server 디렉토리에서 `mvn compile` 명령어를 입력해 서버를 컴파일합니다.
 0. server 디렉토리에서 `mvn exec:java` 명령어를 입력해 서버를 실행합니다.
 0. 카카오톡으로 `테스트`라는 메시지를 수신받아 테스트합니다.
+
+## 커스텀 서비스 추가
+`com.youhogeon.kakaobot.service.Service` 인터페이스를 구현하면 서비스로 등록됩니다.

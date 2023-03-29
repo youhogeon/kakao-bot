@@ -34,10 +34,14 @@ public class ReceiveController {
             kakaoDto = objectMapper.readValue(data, KakaoDto.class);
         } catch (UnsupportedEncodingException | JsonProcessingException e) {
             log.warn("수신된 JSON 파싱 실패", e, character);
-
+            e.printStackTrace();
             return;
         }
 
+        process(kakaoDto, packet);
+    }
+
+    private void process(KakaoDto kakaoDto, DatagramPacket packet) {
         for (Service service : services) {
             if (!service.isSupported(kakaoDto)) continue;
 
