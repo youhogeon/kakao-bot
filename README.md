@@ -1,5 +1,7 @@
 # 카카오톡 봇
 
+![샘플 이미지](https://user-images.githubusercontent.com/31335146/228534637-baf0a3bb-6042-4b48-923c-fa21e95b28d8.gif)
+
 ## 원리
 안드로이드 기기의 notification을 이용해 수신된 카카오톡 메시지를 서버로 전달받아 처리 후 응답합니다.
 
