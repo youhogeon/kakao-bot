@@ -2,18 +2,18 @@ package com.youhogeon.kakaobot.service;
 
 import org.springframework.stereotype.Component;
 
-import com.youhogeon.kakaobot.dto.KakaoDto;
+import com.youhogeon.kakaobot.dto.KakaoReq;
 
 @Component
 public class TestService implements Service {
 
     @Override
-    public String process(KakaoDto message) {
-        return "테스트 성공입니다! " + message.getAuther().getName() + "님";
+    public String process(KakaoReq message) {
+        return "테스트 성공입니다! " + message.getName() + "님";
     }
 
     @Override
-    public boolean isSupported(KakaoDto message) {
+    public boolean isSupported(KakaoReq message) {
         if (message.getContent().equals("테스트")) return true;
 
         return false;

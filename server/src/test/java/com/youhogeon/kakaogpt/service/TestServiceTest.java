@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import com.youhogeon.kakaobot.dto.KakaoDto;
-import com.youhogeon.kakaobot.dto.KakaoDto.Auther;
+import com.youhogeon.kakaobot.dto.KakaoReq;
 import com.youhogeon.kakaobot.service.TestService;
 
 @SpringJUnitConfig(classes = {TestService.class})
@@ -21,7 +20,7 @@ public class TestServiceTest {
     @Test
     void 지원_테스트() {
         // given
-        KakaoDto kakaoDto = KakaoDto.builder()
+        KakaoReq kakaoDto = KakaoReq.builder()
             .content("테스트")
             .build();
 
@@ -35,7 +34,7 @@ public class TestServiceTest {
     @Test
     void 미지원_테스트() {
         // given
-        KakaoDto kakaoDto = KakaoDto.builder()
+        KakaoReq kakaoDto = KakaoReq.builder()
             .content("테스트아님")
             .build();
 
@@ -50,14 +49,10 @@ public class TestServiceTest {
     void 작동_테스트() {
         // given
         String name = UUID.randomUUID().toString();
-
-        Auther auther = Auther.builder()
-            .name(name)
-            .build();
     
-        KakaoDto kakaoDto = KakaoDto.builder()
+        KakaoReq kakaoDto = KakaoReq.builder()
             .content("테스트")
-            .auther(auther)
+            .name(name)
             .build();
 
         // when

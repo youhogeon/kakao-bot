@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.youhogeon.kakaobot.dto.OpenAIRequest;
-import com.youhogeon.kakaobot.dto.OpenAIResponse;
-import com.youhogeon.kakaobot.dto.KakaoDto;
+import com.youhogeon.kakaobot.dto.OpenAIReq;
+import com.youhogeon.kakaobot.dto.OpenAIRes;
+import com.youhogeon.kakaobot.dto.KakaoReq;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,7 +46,7 @@ public class OpenAIService implements Service {
         return message.substring(PREFIX.length());
     }
 
-    private String requestAPI(OpenAIRequest chatGPTRequest) {
+    private String requestAPI(OpenAIReq chatGPTRequest) {
         try {
             String result = Jsoup.connect(OPENAI_API_URL)
                 .header("Authorization", "Bearer " + secretKey)
@@ -58,9 +58,9 @@ public class OpenAIService implements Service {
                 .execute()
                 .body();
             
-            OpenAIResponse gptDto = objectMapper.readValue(result, OpenAIResponse.class);
+            OpenAIRes gptDto = objectMapper.readValue(result, OpenAIRes.class);
 
-            return gptDto.getChoices().get(0).getMessage().getContent();
+            return gptDto.getChoices().get(0).getContent();
     
         } catch (IOException e) {
             log.warn("OpenAI API 호출 실패", e, chatGPTRequest);
@@ -70,9 +70,9 @@ public class OpenAIService implements Service {
     }
 
     @Override
-    public String process(KakaoDto message) {
+    public String process(KakaoReq message) {
         String requestMessage = removePrefix(message.getContent());
-        OpenAIRequest chatGPTRequest = new OpenAIRequest();
+        OpenAIReq chatGPTRequest = new OpenAIReq();
         chatGPTRequest.setModel(model);
         chatGPTRequest.setMaxTokens(maxTokens);
         chatGPTRequest.addMessage("system", systemDefinition);
@@ -82,7 +82,7 @@ public class OpenAIService implements Service {
     }
 
     @Override
-    public boolean isSupported(KakaoDto message) {
+    public boolean isSupported(KakaoReq message) {
         if (secretKey == null || secretKey.length() == 0) return false;
 
         if (message.getContent().startsWith(PREFIX)) return true;

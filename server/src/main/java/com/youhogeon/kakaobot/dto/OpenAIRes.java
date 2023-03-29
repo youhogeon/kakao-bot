@@ -1,13 +1,14 @@
 package com.youhogeon.kakaobot.dto;
 
 import java.util.List;
+import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Getter;
 
 @Getter
-public class OpenAIResponse {
+public class OpenAIRes {
     
     private String id;
     private String object;
@@ -31,17 +32,19 @@ public class OpenAIResponse {
     
     @Getter
     public static class Choice {
-        private Message message;
         private int index;
 
         @JsonProperty("finish_reason")
         private String finishReason;
-    }
 
-    @Getter
-    public static class Message {
         private String role;
         private String content;
+        
+        @JsonProperty("message")
+        private void unpackNameFromNestedObject(Map<String, String> auther) {
+            role = auther.get("role");
+            content = auther.get("content");
+        }
     }
 
 }

@@ -11,7 +11,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class OpenAIRequest {
+public class OpenAIReq {
     
     private String model = "gpt-3.5-turbo";
 

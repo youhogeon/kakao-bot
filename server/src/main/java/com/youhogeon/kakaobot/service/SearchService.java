@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.youhogeon.kakaobot.dto.KakaoDto;
+import com.youhogeon.kakaobot.dto.KakaoReq;
 
 import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
@@ -30,7 +30,7 @@ public class SearchService implements Service {
     }
 
     @Override
-    public String process(KakaoDto message) {
+    public String process(KakaoReq message) {
         String[] split = split(message.getContent());
         String query = "";
 
@@ -44,7 +44,7 @@ public class SearchService implements Service {
     }
 
     @Override
-    public boolean isSupported(KakaoDto message) {
+    public boolean isSupported(KakaoReq message) {
         String[] split = split(message.getContent());
 
         if (map.containsKey(split[0]) && split[1].length() <= MAX_QUERY_LENGTH) return true;

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Component;
 
-import com.youhogeon.kakaobot.dto.KakaoDto;
+import com.youhogeon.kakaobot.dto.KakaoReq;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
@@ -35,12 +35,12 @@ public class HelpService implements Service {
     }
 
     @Override
-    public String process(KakaoDto message) {
+    public String process(KakaoReq message) {
         return descriptions;
     }
 
     @Override
-    public boolean isSupported(KakaoDto message) {
+    public boolean isSupported(KakaoReq message) {
         if (message.getContent().equals(COMMAND)) return true;
 
         return false;

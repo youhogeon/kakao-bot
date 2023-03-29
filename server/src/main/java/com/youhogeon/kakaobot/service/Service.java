@@ -1,12 +1,12 @@
 package com.youhogeon.kakaobot.service;
 
-import com.youhogeon.kakaobot.dto.KakaoDto;
+import com.youhogeon.kakaobot.dto.KakaoReq;
 
 public interface Service {
     
-    public String process(KakaoDto message);
+    public String process(KakaoReq message);
     
-    public boolean isSupported(KakaoDto message);
+    public boolean isSupported(KakaoReq message);
 
     public String getDescription();
 
