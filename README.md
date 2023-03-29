@@ -22,3 +22,9 @@
 
 ## 커스텀 서비스 추가
 `com.youhogeon.kakaobot.service.Service` 인터페이스를 구현하면 서비스로 등록됩니다.
+
+## 기본 제공 서비스
+* TestService : 테스트용 서비스
+* HelpService : 도움말 서비스
+* SearchService : 검색엔진 연결 서비스
+* OpenAIService : OpenAI API를 이용한 ChatGPT 채팅 지원 서비스
