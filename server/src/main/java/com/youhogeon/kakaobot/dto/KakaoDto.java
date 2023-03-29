@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
+@ToString
 public class KakaoDto {
     
     private String content;
@@ -20,12 +22,12 @@ public class KakaoDto {
 
     @Getter
     @EqualsAndHashCode
+    @ToString
     public static class Auther {
         
         private String name;
         private String avatar;
     
     }
-    
 
 }

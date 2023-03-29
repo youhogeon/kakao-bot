@@ -16,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 public class HelpService implements Service {
 
     private final List<Service> services;
+
+    private final String COMMAND = "얌마";
     private String descriptions;
 
     @PostConstruct
@@ -39,7 +41,7 @@ public class HelpService implements Service {
 
     @Override
     public boolean isSupported(KakaoDto message) {
-        if (message.getContent().equals("얌마")) return true;
+        if (message.getContent().equals(COMMAND)) return true;
 
         return false;
     }

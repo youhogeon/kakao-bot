@@ -7,9 +7,11 @@ import java.net.DatagramSocket;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class ServerRunner {
 
     private final DatagramSocket socket;
@@ -29,7 +31,7 @@ public class ServerRunner {
         try{
             socket.receive(packet);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.warn("소켓 수신 실패", e);
 
             return;
         }

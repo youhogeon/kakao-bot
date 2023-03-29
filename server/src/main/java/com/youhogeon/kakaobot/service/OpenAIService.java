@@ -13,9 +13,11 @@ import com.youhogeon.kakaobot.dto.OpenAIResponse;
 import com.youhogeon.kakaobot.dto.KakaoDto;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class OpenAIService implements Service {
 
     private final ObjectMapper objectMapper;
@@ -53,7 +55,6 @@ public class OpenAIService implements Service {
 
 
         try {
-            System.out.println(objectMapper.writeValueAsString(chatGPTRequest));
             String result = Jsoup.connect(OPENAI_API_URL)
                 .header("Authorization", "Bearer " + secretKey)
                 .header("Content-Type", "application/json")
@@ -68,7 +69,7 @@ public class OpenAIService implements Service {
 
             return gptDto.getChoices().get(0).getMessage().getContent();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.warn("OpenAI API 호출 실패", e, message);
         }
 
         return "얌마에게 문제가 생겼어요! 😯";

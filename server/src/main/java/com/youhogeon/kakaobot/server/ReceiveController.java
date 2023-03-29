@@ -12,9 +12,11 @@ import com.youhogeon.kakaobot.dto.KakaoDto;
 import com.youhogeon.kakaobot.service.Service;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class ReceiveController {
 
     private final Sender sender;
@@ -23,14 +25,16 @@ public class ReceiveController {
 
     public void receive(DatagramPacket packet) {
         KakaoDto kakaoDto;
+        byte[] character = null;
 
         try {
-            byte[] character = packet.getData();
+            character = packet.getData();
             String data = new String(character, "UTF-8");
         
             kakaoDto = objectMapper.readValue(data, KakaoDto.class);
         } catch (UnsupportedEncodingException | JsonProcessingException e) {
-            e.printStackTrace();
+            log.warn("수신된 JSON 파싱 실패", e, character);
+
             return;
         }
 

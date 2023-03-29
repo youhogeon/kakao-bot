@@ -11,8 +11,10 @@ import org.springframework.stereotype.Component;
 import com.youhogeon.kakaobot.dto.KakaoDto;
 
 import jakarta.annotation.PostConstruct;
+import lombok.extern.slf4j.Slf4j;
 
 @Component
+@Slf4j
 public class SearchService implements Service {
 
     private final Map<String, String> map = new TreeMap<String, String>();
@@ -35,7 +37,7 @@ public class SearchService implements Service {
         try {
             query = URLEncoder.encode(split[1], "UTF-8");
         } catch (UnsupportedEncodingException e) {
-            
+            log.warn("검색어 문자열 인코딩 실패", e, message);
         }
 
         return map.get(split[0]) + query;
