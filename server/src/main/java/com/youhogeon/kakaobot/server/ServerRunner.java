@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import lombok.RequiredArgsConstructor;
@@ -12,14 +14,15 @@ import lombok.extern.slf4j.Slf4j;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class ServerRunner {
+public class ServerRunner implements ApplicationRunner {
 
     private final DatagramSocket socket;
     private final ReceiveController receiveController;
 
     private final int BUFFER_SIZE = 32767;
 
-    public void run() {
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
 		while (true) {
             receive();
         }

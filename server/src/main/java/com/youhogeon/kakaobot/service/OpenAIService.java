@@ -25,13 +25,13 @@ public class OpenAIService implements Service {
     @Value("${openai.secretkey}")
     private String secretKey;
 
-    @Value("${openai.systemDefinition}")
+    @Value("${openai.system-definition}")
     private String systemDefinition;
 
     @Value("${openai.model}")
     private String model;
 
-    @Value("${openai.maxTokens}")
+    @Value("${openai.max-tokens}")
     private int maxTokens;
 
     @Value("${openai.timeout}")
@@ -48,6 +48,7 @@ public class OpenAIService implements Service {
 
     private String requestAPI(OpenAIReq chatGPTRequest) {
         try {
+            System.out.println(systemDefinition);
             String result = Jsoup.connect(OPENAI_API_URL)
                 .header("Authorization", "Bearer " + secretKey)
                 .header("Content-Type", "application/json")
