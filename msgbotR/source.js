@@ -5,24 +5,14 @@ const server = {
     port: 21318,
 }
 
-/**
- * (string) msg.content: 메시지의 내용
- * (string) msg.room: 메시지를 받은 방 이름
- * (User) msg.author: 메시지 전송자
- * (string) msg.author.name: 메시지 전송자 이름
- * (Image) msg.author.avatar: 메시지 전송자 프로필 사진
- * (string) msg.author.avatar.getBase64()
- * (boolean) msg.isGroupChat: 단체/오픈채팅 여부
- * (boolean) msg.isDebugRoom: 디버그룸에서 받은 메시지일 시 true
- * (string) msg.packageName: 메시지를 받은 메신저의 패키지명
- * (void) msg.reply(string): 답장하기
- */
 function onMessage(msg) {
     if (msg.packageName != "com.kakao.talk") return;
 
+    const room = msg.room;
+
     const dto = {
         content: msg.content,
-        room: msg.room,
+        room: room,
         auther: {
             name: msg.author.name,
             avatar: msg.author.avatar.getBase64(),
@@ -57,7 +47,7 @@ function onMessage(msg) {
                     )
                 );
 
-                msg.reply(response);
+                bot.send(room, response);
 
                 break;
             }
@@ -68,8 +58,6 @@ function onMessage(msg) {
 
     thread.start();
 }
-bot.addListener(Event.MESSAGE, onMessage);
-
 
 function onCreate(savedInstanceState, activity) {
   var textView = new android.widget.TextView(activity);
@@ -92,6 +80,7 @@ function onDestroy(activity) {}
 
 function onBackPressed(activity) {}
 
+bot.addListener(Event.MESSAGE, onMessage);
 bot.addListener(Event.Activity.CREATE, onCreate);
 bot.addListener(Event.Activity.START, onStart);
 bot.addListener(Event.Activity.RESUME, onResume);
