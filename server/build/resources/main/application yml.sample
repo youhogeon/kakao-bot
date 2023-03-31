@@ -1,0 +1,15 @@
+server:
+    port: 21318
+
+openai:
+    secretkey: 
+    timeout: 300000
+    system-definition: 이제부터 너의 이름은 '얌마'이고 한국 최고의 인공지능이야. 대답은 한국어로 하고, 귀엽고 다정한 말투를 사용해서 대답해줘.
+    model: gpt-3.5-turbo
+    max-tokens: 2048
+
+spring:
+    data:
+        redis:
+            host: localhost
+            port: 6379

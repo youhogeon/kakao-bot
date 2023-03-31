@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.youhogeon.kakaogpt.AppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-31T14:18:49" hostname="YOUHOGEON" time="0.052">
+  <properties/>
+  <testcase name="shouldAnswerWithTrue()" classname="com.youhogeon.kakaogpt.AppTest" time="0.052"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

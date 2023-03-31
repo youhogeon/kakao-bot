@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.youhogeon.kakaogpt.service.TestServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-03-31T14:18:51" hostname="YOUHOGEON" time="0.008">
+  <properties/>
+  <testcase name="미지원_테스트()" classname="com.youhogeon.kakaogpt.service.TestServiceTest" time="0.002"/>
+  <testcase name="지원_테스트()" classname="com.youhogeon.kakaogpt.service.TestServiceTest" time="0.001"/>
+  <testcase name="작동_테스트()" classname="com.youhogeon.kakaogpt.service.TestServiceTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

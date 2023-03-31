@@ -1,0 +1,29 @@
+{
+    "properties": [
+        {
+            "name": "openai.secretkey",
+            "type": "java.lang.String",
+            "description": "Open AI 개발자센터에서 발급받은 비밀키"
+        },
+        {
+            "name": "openai.timeout",
+            "type": "java.lang.String",
+            "description": "Open AI API 응답 대기 시간"
+        },
+        {
+            "name": "openai.system-definition",
+            "type": "java.lang.String",
+            "description": "인공지능의 컨샙"
+        },
+        {
+            "name": "openai.model",
+            "type": "java.lang.String",
+            "description": "Open AI 인공지능 모델명"
+        },
+        {
+            "name": "openai.max-tokens",
+            "type": "java.lang.String",
+            "description": "요청 당 허용되는 최대 토큰"
+        }
+    ]
+}
