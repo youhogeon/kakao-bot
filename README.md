@@ -2,6 +2,11 @@
 
 <img src='https://user-images.githubusercontent.com/31335146/228534637-baf0a3bb-6042-4b48-923c-fa21e95b28d8.gif' width="400px" alt="샘플 이미지">
 
+## 데모
+<img src='https://user-images.githubusercontent.com/31335146/230117007-700f7ebb-e777-444f-a45a-1e60ccc842ec.png' width="100px" alt="카카오톡 친구 추가 QR코드 이미지">\
+모바일전용 링크 : [https://bit.ly/yammabot](https://bit.ly/yammabot)\
+PC버전 카카오톡 : 친구 탭 -> 친구추가 -> ID로추가 -> yammabot
+
 ## 원리
 안드로이드 기기의 notification을 이용해 수신된 카카오톡 메시지를 서버로 전달받아 처리 후 응답합니다.
 
